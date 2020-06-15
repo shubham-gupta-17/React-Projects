@@ -1,0 +1,122 @@
+Trip Planner:
+1. Add new trip
+2. List all the trips
+3. search based system (filtering)
+4. deploy this application on netlify
+
+//=======================================================================================================================
+
+ONLINE RESOURCES FOR REACT:
+1. https://medium.com/in-the-weeds/learning-react-with-create-react-app-part-1-a12e1833fdc
+2. https://medium.com/in-the-weeds/learning-react-with-create-react-app-part-2-3ad99f38b48d
+
+//========================================================================================================================
+
+Things to learn:
+1. Components 
+2. how to make classes in react (javascript)
+3. how do we manage states
+4. how to do routing in react
+5. what are props and how do we pass the props
+
+//========================================================================================================================
+
+How to design :
+1. make separate folders in src for bacground images or images used for styling, display.
+2. make separate folder for styling (CSS) 
+3. these are done just to keep everything in organise manner
+4. add 3 buttons on frontend 
+	4.1 home button
+	4.2 add trip button
+	4.3 list all trips
+
+//========================================================================================================================
+
+Main files:
+1. package.json : contains all packages needed for running application.
+1. app.js: what will be displayed on front
+3. index.js:
+4. index.css: for styling
+
+//=========================================================================================================================
+
+Command to run react:
+1. npx create-react-app your_app_name: will bootstrap my react app on the default
+2. npm run start: will start the script by the name start
+3. npm install react-icons
+4. npm install react-router-dom
+
+
+//=====================================================================================================================================
+
+Theory:  BROWSER ONLY UNDERSTANDS HTML, CSS, JAVASCRIPT hence we can run only these things so eventually our all code is going to 		 convert in html.
+
+	App.js is the main file, App is the parent and everything is the child example all components are child. we will import component file 		in App.js and will insert this App at the position of element by id root 
+
+	single inverted commas or double inverted commas are similar for js files similarly ; is also optional adding it or not will 		   not affect our code.
+	Componenst are used only for specifying things we will use in our app All our logic must be written in App.js
+
+1. Components: all the pieces that we will build on our website and all components should start with capital letters. 
+	       We will add 3 navigation tabs(box) home button, button for adding trip, button to show list of all trips.
+	       Components are nothing but a javascript file which contains a function or a class
+
+	1.1 On a trip app there must be a option for navigation hence we will create an icon for that, now we  can use icons from file 		   "react-icons".
+
+	    react-icons are npm package i.e. a 3rd party package which are used to show fancy icons on website we need to install it to 	    use and command for that : npm install react-icons ( npm install 3rd party packages )
+
+	1.2 Components are written in JSX which is basically javascript inside html and we have to export this components file(in our 
+	    case which is Navigation.js) and components are a self closing tabs type
+	
+	1.3 Components are of two types:
+		1.3.1 Functional based : these are implemented using function like in Navigation.js in this we return straight away
+		1.3.2 Class based: these are implemented using class like in App.js {Code: export class App extends React.Component},
+				   we use a render method to return html.
+
+	1.4 The best part about component is that we can create as many components as we want and just import them in App.js file to 
+	    make that file look clean and from component we simply return markup.
+
+	1.5 for adding trip and listing trip we will create two different components in component file and will export these two files 
+	    in our App.js. for using javascript in HTML we will write js code inside {} thats why it is called JSX
+
+
+2. index.js :  
+	2.1 getElementById:  it gives the element by id "root" from index.html
+	2.2 React.render: it take the App component and insert it at a position in index.html where a element is present by id "root" 
+			  which is <div> basically
+
+3. We need to do routing which basically means when we click on one of the three tabs we must be directed to next page in our case it is
+add and we need to install a 3rd party package for that. redirecting to the next page will be handled by react router dom link tags.
+these tags changes the browser url. Now these link tags are wrapped inside Router component in App.js to make these link components work
+
+
+4. ADDTRIP :
+	we will create a form for adding trip which includes: date of trip, place, type of drip:
+		1. define variables for this.
+		2. take inputs for this	
+		3. put input values in respective variables
+		4. make a submit button on Addtrip page which will take all inputs, we also need a submit handler to redirect website 
+		   after submitting the form.
+		5. We will create a function addtrip in App.js to keep track of trips whenever we get a new trip from input, this function
+		   will keep the previous state and will append new states after previous ones.
+		6. now only app.js knows about this function and our trips are written in AddTrip.js so we need to connect both these
+
+5. States: these are basically objects . whenever i want to keep a track of things if put it inside state and this state will have a key(addtrip)
+	Declare: this.state={}
+	for making a state that component can be either class based or function based and make these states in App.js, in our app
+	we want to keep track of trips and trip contains multiple vairable i.e. our trip is an object so our state will be an array
+	of objects.
+
+6. Router: it is used to route all the components
+   Route : it takes two things path and render , path tells the path to go to and render tells which component to route. route basically
+	   redirect the website to that path.
+   Switch : it is used to show something on the route path
+   Props: App.js is the Parent file and we can not pass anything from parent to children file directly hence we use props sytem for passing
+
+
+7. Flow of Addtrip component : on main page when we click on add new trip icon then the app will redirect to the path written in App.js and 
+  will show the things written in AddTrip.js file when we click submit then our submit handler will submit the input and returns AddNewTrip
+ back to addTrip function App.js file the function will append the returned state into previous stored states.
+	
+
+8. Flow of trip List: if there are n trips so we have to iterate over all and print them, this logic will be written in javascript hence put it
+   int {} and for loop we use .map it will iterate over all one by one and pass these value to the trip.js file which is basically UI.
